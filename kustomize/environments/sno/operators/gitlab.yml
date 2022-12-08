@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitlab
+  namespace: gitlab-system
+  labels:
+    name: gitlab
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ahussey-redhat/cicd-gitops-demo.git
+    targetRevision: main
+    path: operators/gitlab
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gitlab-system
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+  ignoreDifferences:
+    - group: "*"
+      kind: "*"
+      managedFieldsManagers:
+      - kube-controller-manager

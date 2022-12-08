@@ -6,4 +6,7 @@ resources:
   - operators/gitlab.yml
   - operators/devspaces.yml
   - operators/pipelines.yml
-  - applications/hello-world.yml
+#  - applications/hello-world.yml
+
+patches:
+  - patches/gitlab.yml
