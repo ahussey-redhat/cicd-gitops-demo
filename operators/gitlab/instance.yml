@@ -11,7 +11,7 @@ spec:
         install: false
       global:
         hosts:
-          domain: k8s.dev.local
+          domain: apps.k8s.dev.local
         ingress:
           configureCertmanager: false
-    version: ''
+    version: 6.6.0

@@ -4,6 +4,8 @@ kind: Subscription
 metadata:
   name: gitlab-operator-kubernetes
   namespace: gitlab-system
+  labels:
+    operators.coreos.com/gitlab-operator-kubernetes.gitlab-system: ""
 spec:
   channel: stable
   installPlanApproval: Automatic

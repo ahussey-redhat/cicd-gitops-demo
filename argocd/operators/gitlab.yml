@@ -3,14 +3,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: gitlab
-  namespace: gitlab-system
+  namespace: openshift-gitops
   labels:
     name: gitlab
 spec:
   project: default
   source:
-    repoURL: https://github.com/ahussey-redhat/cicd-gitops-demo.git
-    targetRevision: main
+    repoURL: git@github.com:ahussey-redhat/cicd-gitops-demo.git
+    targetRevision: develop
     path: operators/gitlab
   destination:
     server: https://kubernetes.default.svc
@@ -19,7 +19,7 @@ spec:
     automated:
       prune: false
       selfHeal: false
-      allowEmpty: false
+      allowEmpty: true
     syncOptions:
       - CreateNamespace=true
     retry:

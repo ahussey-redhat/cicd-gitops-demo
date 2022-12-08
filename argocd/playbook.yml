@@ -9,6 +9,6 @@
       kubernetes.core.k8s:
         src: "operators/{{ item }}"
       loop:
-        - devspaces.yml
+#        - devspaces.yml
         - gitlab.yml
         - pipelines.yml

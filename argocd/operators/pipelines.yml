@@ -3,14 +3,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: openshift-pipelines
-  namespace: openshift-operators
+  namespace: openshift-gitops
   labels:
     name: openshift-pipelines
 spec:
   project: default
   source:
-    repoURL: https://github.com/ahussey-redhat/cicd-gitops-demo.git
-    targetRevision: main
+    repoURL: git@github.com:ahussey-redhat/cicd-gitops-demo.git
+    targetRevision: develop
     path: operators/pipelines
   destination:
     server: https://kubernetes.default.svc
