@@ -2,19 +2,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gitlab
+  name: devspaces
   namespace: openshift-gitops
   labels:
-    name: gitlab
+    name: devspaces
 spec:
   project: default
   source:
     repoURL: git@github.com:ahussey-redhat/cicd-gitops-demo.git
     targetRevision: develop
-    path: operators/gitlab
+    path: operators/devspaces
   destination:
     server: https://kubernetes.default.svc
-    namespace: gitlab-system
+    namespace: openshift-operators
   syncPolicy:
     automated:
       prune: false

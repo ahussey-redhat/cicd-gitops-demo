@@ -2,11 +2,11 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: devspacesoperator
+  name: devspaces-operator
   namespace: openshift-operators
 spec:
   channel: stable
   installPlanApproval: Automatic
-  name: devspacesoperator
+  name: devspaceso-perator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
