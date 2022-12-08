@@ -1,19 +1,20 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: openshift-pipelines
-  namespace: openshift-operators
+  name: gitlab
+  namespace: gitlab-system
   labels:
-    name: openshift-pipelines
+    name: gitlab
 spec:
   project: default
   source:
     repoURL: https://github.com/ahussey-redhat/cicd-gitops-demo.git
     targetRevision: main
-    path: operators/pipelines
+    path: operators/gitlab
   destination:
     server: https://kubernetes.default.svc
-    namespace: openshift-operators
+    namespace: gitlab-system
   syncPolicy:
     automated:
       prune: false

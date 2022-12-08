@@ -1,19 +1,20 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gitlab
-  namespace: gitlab-system
+  name: hello-world
+  namespace: demo
   labels:
-    name: gitlab
+    name: hello-world
 spec:
   project: default
   source:
     repoURL: https://github.com/ahussey-redhat/cicd-gitops-demo.git
     targetRevision: main
-    path: operators/gitlab
+    path: applications/hello-world
   destination:
     server: https://kubernetes.default.svc
-    namespace: gitlab-system
+    namespace: demo
   syncPolicy:
     automated:
       prune: false

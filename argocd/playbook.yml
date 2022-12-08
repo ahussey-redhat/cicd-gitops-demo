@@ -1,0 +1,14 @@
+---
+- name: Configure cluster
+  hosts: localhost
+  connection: local
+  become: false
+  gather_facts: false
+  tasks:
+    - name: deploy operators
+      kubernetes.core.k8s:
+        src: "operators/{{ item }}"
+      loop:
+        - devspaces.yml
+        - gitlab.yml
+        - pipelines.yml

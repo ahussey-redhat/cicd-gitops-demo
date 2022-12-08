@@ -7,6 +7,11 @@ metadata:
 spec:
   chart:
     values:
+      certmanager:
+        install: false
       global:
         hosts:
-          domain: apps.k8s.dev.local
+          domain: k8s.dev.local
+        ingress:
+          configureCertmanager: false
+    version: ''
