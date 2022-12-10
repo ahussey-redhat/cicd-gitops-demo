@@ -1,0 +1,19 @@
+---
+kind: Secret
+apiVersion: v1
+metadata:
+  name: cicd-gitops-repo
+  namespace: openshift-gitops
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  annotations:
+    managed-by: argocd.argoproj.io
+data:
+  insecure: dHJ1ZQ==
+  name: Z2l0b3Bz
+  project: ZGVmYXVsdA==
+  sshPrivateKey: >-
+    {{ lookup('ansible.builtin.file', '~/.ssh/devspaces') | b64encode }}
+  type: Z2l0
+  url: Z2l0QGdpdGh1Yi5jb206YWh1c3NleS1yZWRoYXQvY2ljZC1naXRvcHMtZGVtby5naXQ=
+type: Opaque

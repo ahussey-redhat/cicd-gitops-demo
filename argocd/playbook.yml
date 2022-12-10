@@ -5,10 +5,6 @@
   become: false
   gather_facts: false
   tasks:
-    - name: deploy operators
+    - name: deploy application
       kubernetes.core.k8s:
-        src: "operators/{{ item }}"
-      loop:
-        - devspaces.yml
-        - gitlab.yml
-        - pipelines.yml
+        src: applications/hello-world.yml
