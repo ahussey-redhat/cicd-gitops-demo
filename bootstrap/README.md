@@ -7,5 +7,5 @@ This directory contains a basic Ansible playbook, which will deploy all the prer
 *Ensure you are logged into to an OpenShift Cluster*
 
 ```bash
-ansible-playbook playbook.yml -v
+ansible-playbook playbook.yml -v --vault-id @prompt
 ```

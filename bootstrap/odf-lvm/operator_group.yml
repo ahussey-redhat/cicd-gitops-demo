@@ -1,0 +1,9 @@
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: odf-lvm-operator
+  namespace: openshift-storage
+spec:
+  targetNamespaces:
+    - openshift-storage

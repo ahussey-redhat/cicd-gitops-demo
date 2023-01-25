@@ -5,63 +5,27 @@
   become: false
   gather_facts: false
   tasks:
-    - name: Configure namespace
+#    - name: configure argocd namespace
+#        kubernetes.core.k8s:
+#        src: "argocd/namespace.yml"
+#    - name: configure argocd subscription
+#      kubernetes.core.k8s:
+#        src: "argocd/subscription.yml"
+#    - name: configure argocd cluster role binding
+#      kubernetes.core.k8s:
+#        src: "argocd/clusterrolebinding.yml"
+#    - name: configure argocd repo
+#      kubernetes.core.k8s:
+#        template: "argocd/repo.yml"
+#    - name: configure argocd initial application
+#      kubernetes.core.k8s:
+#        template: "argocd/application.yml"
+#    - name: configure ODF LVM namespace
+#      kubernetes.core.k8s:
+#        src: "odf-lvm/namespace.yml"
+    - name: configure ODF LVM subscription
       kubernetes.core.k8s:
-        src: "operators/gitops/namespace.yml"
-    - name: Configure subscription
+        src: "odf-lvm/subscription.yml"
+    - name: configure ODF LVM operator group
       kubernetes.core.k8s:
-        src: "operators/gitops/subscription.yml"
-    - name: Configure cluster role binding
-      kubernetes.core.k8s:
-        src: "operators/gitops/clusterrolebinding.yml"
-    - name: Configure repo
-      kubernetes.core.k8s:
-        template: "operators/gitops/repo.yml"
-
-- name: Install and configure TekTon
-  hosts: localhost
-  connection: local
-  become: false
-  gather_facts: false
-  tasks:
-    - name: Configure namespace
-      kubernetes.core.k8s:
-        src: "operators/pipelines/subscription.yml"
-    # - name: Configure tasks
-    #   kubernetes.core.k8s:
-    #     template: "operators/pipelines/tasks.yml"
-    # - name: Configure pipelines
-    #   kubernetes.core.k8s:
-    #     template: "operators/pipelines/pipelines.yml"
-    # - name: Configure event listeners
-    #   kubernetes.core.k8s:
-    #     template: "operators/pipelines/eventlisteners.yml"
-
-- name: Install and configure GitLab
-  hosts: localhost
-  connection: local
-  become: false
-  gather_facts: false
-  tasks:
-    - name: Configure namespace
-      kubernetes.core.k8s:
-        src: "operators/gitlab/namespace.yml"
-    - name: Configure subscription
-      kubernetes.core.k8s:
-        src: "operators/gitlab/subscription.yml"
-    - name: Configure GitLab instance
-      kubernetes.core.k8s:
-        src: "operators/gitlab/instance.yml"
-
-- name: Install and configure Dev Spaces
-  hosts: localhost
-  connection: local
-  become: false
-  gather_facts: false
-  tasks:
-    - name: Configure namespace
-      kubernetes.core.k8s:
-        src: "operators/devspaces/namespace.yml"
-    - name: Configure subscription
-      kubernetes.core.k8s:
-        src: "operators/devspaces/subscription.yml"
+        src: "odf-lvm/operator_group.yml"
