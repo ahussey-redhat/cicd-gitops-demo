@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gitops
+  name: operators
   namespace: openshift-gitops
 spec:
   destination:
@@ -10,9 +10,9 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: gitops
+    path: environment/production/sno
     repoURL: >-
-      ssh://git@github.com:ahussey-redhat/cicd-gitops-demo.git
-targetRevision: HEAD
+      git@github.com:ahussey-redhat/cicd-gitops-demo.git
+    targetRevision: develop
   syncPolicy:
     automated: {}

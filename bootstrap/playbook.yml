@@ -5,27 +5,32 @@
   become: false
   gather_facts: false
   tasks:
-#    - name: configure argocd namespace
-#        kubernetes.core.k8s:
-#        src: "argocd/namespace.yml"
-#    - name: configure argocd subscription
-#      kubernetes.core.k8s:
-#        src: "argocd/subscription.yml"
-#    - name: configure argocd cluster role binding
-#      kubernetes.core.k8s:
-#        src: "argocd/clusterrolebinding.yml"
-#    - name: configure argocd repo
-#      kubernetes.core.k8s:
-#        template: "argocd/repo.yml"
-#    - name: configure argocd initial application
-#      kubernetes.core.k8s:
-#        template: "argocd/application.yml"
-#    - name: configure ODF LVM namespace
-#      kubernetes.core.k8s:
-#        src: "odf-lvm/namespace.yml"
-    - name: configure ODF LVM subscription
-      kubernetes.core.k8s:
-        src: "odf-lvm/subscription.yml"
-    - name: configure ODF LVM operator group
-      kubernetes.core.k8s:
-        src: "odf-lvm/operator_group.yml"
+  # Deploy ArgoCD
+  # - name: configure argocd namespace
+  #   kubernetes.core.k8s:
+  #     src: "argocd/namespace.yml"
+  - name: configure argocd subscription
+    kubernetes.core.k8s:
+      src: "argocd/subscription.yml"
+  - name: configure argocd cluster role binding
+    kubernetes.core.k8s:
+      src: "argocd/clusterrolebinding.yml"
+  - name: configure argocd repo
+    kubernetes.core.k8s:
+      template: "argocd/repo.yml"
+  - name: configure argocd initial application
+    kubernetes.core.k8s:
+      template: "argocd/application.yml"
+  # Install ODF
+  # - name: configure ODF LVM namespace
+  #   kubernetes.core.k8s:
+  #     src: "odf-lvm/namespace.yml"
+  - name: configure ODF LVM subscription
+    kubernetes.core.k8s:
+      src: "odf-lvm/subscription.yml"
+  - name: configure ODF LVM operator group
+    kubernetes.core.k8s:
+      src: "odf-lvm/operator_group.yml"
+  - name: configure ODF LVM operator group
+    kubernetes.core.k8s:
+      src: "odf-lvm/instance.yml"
