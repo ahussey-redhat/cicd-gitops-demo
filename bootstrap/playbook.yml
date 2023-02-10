@@ -5,32 +5,39 @@
   become: false
   gather_facts: false
   tasks:
-  # Deploy ArgoCD
-  # - name: configure argocd namespace
-  #   kubernetes.core.k8s:
-  #     src: "argocd/namespace.yml"
-  - name: configure argocd subscription
-    kubernetes.core.k8s:
-      src: "argocd/subscription.yml"
-  - name: configure argocd cluster role binding
-    kubernetes.core.k8s:
-      src: "argocd/clusterrolebinding.yml"
-  - name: configure argocd repo
-    kubernetes.core.k8s:
-      template: "argocd/repo.yml"
-  - name: configure argocd initial application
-    kubernetes.core.k8s:
-      template: "argocd/application.yml"
+    # Deploy ArgoCD
+    - name: configure argocd namespace
+      kubernetes.core.k8s:
+        src: "argocd/namespace.yml"
+      failed_when: false
+
+    - name: configure argocd subscription
+      kubernetes.core.k8s:
+        src: "argocd/subscription.yml"
+      register: deploy_argocd
+      until: "deploy_argocd.result.status.state == 'AtLatestKnown'"
+      retries: 10
+      delay: 10
+
+    - name: configure argocd cluster role binding
+      kubernetes.core.k8s:
+        src: "argocd/clusterrolebinding.yml"
+    - name: configure argocd repo
+      kubernetes.core.k8s:
+        template: "argocd/repo.yml"
+    - name: configure argocd initial application
+      kubernetes.core.k8s:
+        template: "argocd/application.yml"
   # Install ODF
   # - name: configure ODF LVM namespace
   #   kubernetes.core.k8s:
   #     src: "odf-lvm/namespace.yml"
-  - name: configure ODF LVM subscription
-    kubernetes.core.k8s:
-      src: "odf-lvm/subscription.yml"
-  - name: configure ODF LVM operator group
-    kubernetes.core.k8s:
-      src: "odf-lvm/operator_group.yml"
-  - name: configure ODF LVM operator group
-    kubernetes.core.k8s:
-      src: "odf-lvm/instance.yml"
+  #  - name: configure ODF LVM subscription
+  #    kubernetes.core.k8s:
+  #      src: "odf-lvm/subscription.yml"
+  #  - name: configure ODF LVM operator group
+  #    kubernetes.core.k8s:
+  #      src: "odf-lvm/operator_group.yml"
+  #  - name: configure ODF LVM operator group
+  #    kubernetes.core.k8s:
+  #      src: "odf-lvm/instance.yml"

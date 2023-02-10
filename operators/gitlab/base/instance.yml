@@ -4,6 +4,8 @@ kind: GitLab
 metadata:
   name: gitlab
   namespace: gitlab-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   chart:
     values:

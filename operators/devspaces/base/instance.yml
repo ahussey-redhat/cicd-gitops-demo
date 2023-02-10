@@ -4,6 +4,8 @@ kind: CheCluster
 metadata:
   name: devspaces
   namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   components:
     cheServer:
