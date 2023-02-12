@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
   - subscription.yml
-  - instance.yml
+    #  - instance.yml

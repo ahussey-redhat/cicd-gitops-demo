@@ -10,7 +10,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: environment/production/sno
+    path: environment/develop/local
     repoURL: >-
       git@github.com:ahussey-redhat/cicd-gitops-demo.git
     targetRevision: develop
