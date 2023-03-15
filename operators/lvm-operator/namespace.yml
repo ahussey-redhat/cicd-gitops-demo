@@ -1,9 +1,0 @@
----
-kind: Project
-apiVersion: project.openshift.io/v1
-metadata:
-  name: openshift-storage
-  labels:
-    kubernetes.io/metadata.name: openshift-storage
-  annotations:
-    argocd.argoproj.io/sync-wave: "0"

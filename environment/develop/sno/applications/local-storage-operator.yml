@@ -2,19 +2,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: pipeline-operator
+  name: local-storage-operator
   namespace: openshift-gitops
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   destination:
     namespace: openshift-operators
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: operators/pipelines/overlays/latest
+    path: operators/local-storage-operator
     repoURL: >-
       git@github.com:ahussey-redhat/cicd-gitops-demo.git
     targetRevision: develop
   syncPolicy:
-    automated: {}
+    automated:
+      prune: false
+      selfHeal: true
