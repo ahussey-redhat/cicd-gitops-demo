@@ -6,6 +6,8 @@ metadata:
   namespace: gitlab-system
   labels:
     operators.coreos.com/gitlab-operator-kubernetes.gitlab-system: ""
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   channel: stable
   installPlanApproval: Automatic

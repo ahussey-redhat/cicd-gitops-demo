@@ -2,13 +2,13 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: openshift-pipelines-operator-rh
-  namespace: openshift-operators
+  name: lvm-operator
+  namespace: openshift-storage
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
-  channel: latest
+  channel: stable
   installPlanApproval: Automatic
-  name: openshift-pipelines-operator-rh
+  name: lvm-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace

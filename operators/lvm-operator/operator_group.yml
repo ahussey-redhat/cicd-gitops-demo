@@ -2,8 +2,10 @@
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
-  name: odf-lvm-operator
+  name: lvm-operator
   namespace: openshift-storage
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   targetNamespaces:
     - openshift-storage
