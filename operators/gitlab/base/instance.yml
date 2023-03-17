@@ -16,4 +16,4 @@ spec:
           domain: apps.k8s.dev.local
         ingress:
           configureCertmanager: false
-    version: 6.6.0
+    version: 6.9.3

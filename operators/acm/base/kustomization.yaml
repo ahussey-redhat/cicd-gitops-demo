@@ -5,3 +5,4 @@ resources:
   - namespace.yml
   - subscription.yml
   - operatorgroup.yml
+  - instance.yml

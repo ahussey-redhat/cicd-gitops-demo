@@ -5,6 +5,6 @@ resources:
   - applications/local-storage-operator.yml
   - applications/lvms-operator.yml
   - applications/pipelines-operator.yml
-  # - applications/acm-operator.yml
+  - applications/acm-operator.yml
   - applications/devspaces-operator.yml
   - applications/gitlab-operator.yml
