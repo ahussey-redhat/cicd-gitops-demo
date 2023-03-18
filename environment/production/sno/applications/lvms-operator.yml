@@ -1,0 +1,22 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lvms-operator
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  destination:
+    namespace: openshift-operators
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: operators/lvms-operator
+    repoURL: >-
+      git@github.com:ahussey-redhat/cicd-gitops-demo.git
+    targetRevision: production
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
