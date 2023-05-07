@@ -9,3 +9,4 @@ resources:
   - applications/devspaces-operator.yml
   # - applications/gitlab-operator.yml
   - applications/rhsso.yml
+  - applications/vault-operator.yml

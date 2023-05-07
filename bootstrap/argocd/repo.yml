@@ -17,3 +17,18 @@ data:
   type: Z2l0
   url: Z2l0QGdpdGh1Yi5jb206YWh1c3NleS1yZWRoYXQvY2ljZC1naXRvcHMtZGVtby5naXQ=
 type: Opaque
+---
+kind: Secret
+apiVersion: v1
+metadata:
+  name: hashicorp-vault-operator-repo
+  namespace: openshift-gitops
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  annotations:
+    managed-by: argocd.argoproj.io
+data:
+  project: ZGVmYXVsdA==
+  type: Z2l0
+  url: aHR0cHM6Ly9naXRodWIuY29tL2hhc2hpY29ycC92YXVsdC1zZWNyZXRzLW9wZXJhdG9yLmdpdA==
+type: Opaque
