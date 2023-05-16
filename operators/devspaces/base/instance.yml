@@ -3,9 +3,9 @@ apiVersion: org.eclipse.che/v2
 kind: CheCluster
 metadata:
   name: devspaces
-  namespace: openshift-operators
+  namespace: openshift-devspaces
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "3"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   components:
@@ -25,9 +25,10 @@ spec:
   containerRegistry: {}
   devEnvironments:
     secondsOfRunBeforeIdling: -1
+    maxNumberofWorkspacesPerUser: -1
     defaultNamespace:
       template: <username>-devspaces
-    secondsOfInactivityBeforeIdling: 1800
+    secondsOfInactivityBeforeIdling: 3600
     storage:
-      pvcStrategy: per-user
+      pvcStrategy: per-workspace
   networking: {}
