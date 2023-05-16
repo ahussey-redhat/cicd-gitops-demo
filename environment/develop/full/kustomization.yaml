@@ -8,4 +8,5 @@ resources:
   - applications/devspaces-operator.yml
   # - applications/gitlab-operator.yml
   - applications/rhsso.yml
+  - applications/crunchydata.yml
   # - applications/vault-operator.yml
