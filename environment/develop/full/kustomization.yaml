@@ -11,3 +11,5 @@ resources:
   - applications/crunchydata.yml
   - applications/atlassian.yml
   # - applications/vault-operator.yml
+  # Other resources
+  - misc/rh-subscription-builds.yml

@@ -10,3 +10,5 @@ resources:
   # - applications/gitlab-operator.yml
   - applications/rhsso.yml
   # - applications/vault-operator.yml
+  # Other components
+  - misc/rh-subscription-builds.yml
