@@ -3,6 +3,7 @@ kind: Kustomization
 metadata:
   name: kustomization-file
 resources:
+  - applications/aws-efi-driver.yml
   - applications/pipelines-operator.yml
   # - applications/acm-operator.yml
   - applications/devspaces-operator.yml

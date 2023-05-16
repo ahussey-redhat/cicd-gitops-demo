@@ -95,13 +95,13 @@ serviceAccount:
     # -- Set to 'true' if a ClusterRole should be created, or 'false' if it
     # already exists.
     #
-    create: false
+    create: true
 
     # -- The name of the ClusterRole to be used. If not specified, but
     # the "serviceAccount.clusterRole.create" flag is set to 'true',
     # then the ClusterRole name will be auto-generated.
     #
-    name:
+    #name:
 
   # -- Grant permissions defined in Role (list and get pods and endpoints) to a service account.
   #
@@ -125,7 +125,7 @@ serviceAccount:
     # the "serviceAccount.clusterRoleBinding.create" flag is set to 'true',
     # then the ClusterRoleBinding name will be auto-generated.
     #
-    name:
+    #name:
 
 # REQUIRED - Database configuration
 #
@@ -143,7 +143,7 @@ database:
    # - 'jdbc:oracle:thin:@<dbhost>:1521:<SID>'
   # https://atlassian.github.io/data-center-helm-charts/userguide/CONFIGURATION/#databaseurl
   #
-  url:
+  url: 'jdbc:postgresql://atlassian-primary.openshift-operators.svc:5432/atlassian'
 
   # -- The Java class name of the JDBC driver to be used. If not specified, then it will
   # need to be provided via the browser during manual configuration post deployment.
@@ -170,11 +170,11 @@ database:
     # --from-literal=password=<password>'
     # https://kubernetes.io/docs/concepts/configuration/secret/#opaque-secrets
     #
-    secretName:
+    secretName: atlassian-pguser-atlassian
 
     # -- The key ('username') in the Secret used to store the database login username
     #
-    usernameSecretKey: username
+    usernameSecretKey: user
 
     # -- The key ('password') in the Secret used to store the database login password
     #
@@ -206,12 +206,12 @@ volumes:
       # -- If 'true', then a 'PersistentVolume' and 'PersistentVolumeClaim' will be dynamically
       # created for each pod based on the 'StorageClassName' supplied below.
       #
-      create: false
+      create: true
 
       # -- Specify the name of the 'StorageClass' that should be used for the local-home
       # volume claim.
       #
-      storageClassName:
+      storageClassName: gp3
 
       # -- Specifies the standard K8s resource requests and/or limits for the local-home
       # volume claims.
@@ -219,22 +219,6 @@ volumes:
       resources:
         requests:
           storage: 1Gi
-
-    # -- Static provisioning of local-home using K8s PVs and PVCs
-    #
-    # NOTE: Due to the ephemeral nature of pods this approach to provisioning volumes for
-    # pods is not recommended. Dynamic provisioning described above is the prescribed
-    # approach.
-    #
-    # When 'persistentVolumeClaim.create' is 'false', then this value can be used to define
-    # a standard K8s volume that will be used for the local-home volume(s). If not defined,
-    # then an 'emptyDir' volume is utilised. Having provisioned a 'PersistentVolume', specify
-    # the bound 'persistentVolumeClaim.claimName' for the 'customVolume' object.
-    # https://kubernetes.io/docs/concepts/storage/persistent-volumes/#static
-    #
-    customVolume: {}
-    # persistentVolumeClaim:
-    #   claimName: "<pvc>"
 
     # -- Specifies the path in the Bitbucket container to which the local-home volume will be
     # mounted.
@@ -258,7 +242,7 @@ volumes:
 
       # -- If 'true' then a 'PersistentVolume' will be created for the NFS server
       #
-      create: false
+      create: true
 
       # NFS server details for which the PersistentVolume should be created.
       #
@@ -284,20 +268,20 @@ volumes:
 
       # -- If 'true', then a 'PersistentVolumeClaim' will be created for the 'PersistentVolume'
       #
-      create: false
+      create: true
 
       # -- Specify the name of the 'StorageClass' that should be used
       #
       # If set to non-empty string value, this will specify the storage class to be used.
       # If left without value, the default Storage Class will be utilised. Alternatively,
       # can be set to the empty string "", to indicate that no Storage Class should be used here.
-      storageClassName:
+      storageClassName: gp3
 
       # -- If persistentVolume.create and persistentVolumeClaim.create are both true then any
       # value supplied here is ignored and the default used. A custom value here is useful
       # when bringing your own 'PersistentVolume' i.e. 'persistentVolume.create' is false.
       #
-      volumeName:
+      #volumeName:
 
       # -- Specifies the access mode of the volume to claim
       #
