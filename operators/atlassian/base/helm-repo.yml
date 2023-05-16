@@ -1,0 +1,13 @@
+---
+apiVersion: helm.openshift.io/v1beta1
+kind: ProjectHelmChartRepository
+metadata:
+  name: atlassian-data-center
+  namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  connectionConfig:
+    url: 'https://atlassian.github.io/data-center-helm-charts'
+  description: Atlassian Data Center Helm Chart Repo
+  name: Atlassian Data Center
