@@ -14,7 +14,7 @@ spec:
   source:
     path: operators/pipelines/overlays/latest
     repoURL: >-
-      git@github.com:ahussey-redhat/cicd-gitops-demo.git
+      https://github.com/ahussey-redhat/cicd-gitops-demo.git
     targetRevision: develop
   syncPolicy:
     automated:
