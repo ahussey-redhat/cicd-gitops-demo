@@ -11,10 +11,11 @@ spec:
   chart:
     values:
       certmanager:
-        install: false
+        install: true
+        email: ahussey@redhat.com
       global:
         hosts:
-          domain: apps.k8s.dev.local
+          domain: apps.test.lbjg.p1.openshiftapps.com
         ingress:
-          configureCertmanager: false
+          configureCertmanager: true
     version: 6.11.0
