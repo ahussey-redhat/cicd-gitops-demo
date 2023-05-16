@@ -6,6 +6,6 @@ resources:
   - applications/pipelines-operator.yml
   # - applications/acm-operator.yml
   - applications/devspaces-operator.yml
-  - applications/gitlab-operator.yml
+  # - applications/gitlab-operator.yml
   - applications/rhsso.yml
   # - applications/vault-operator.yml
