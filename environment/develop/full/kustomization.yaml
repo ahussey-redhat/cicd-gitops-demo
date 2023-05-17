@@ -9,6 +9,7 @@ resources:
   - applications/devspaces-operator.yml
   # - applications/gitlab-operator.yml
   - applications/rhsso.yml
+  - applications/quay-operator.yml
   - applications/crunchydata.yml
   - applications/atlassian.yml
   # - applications/vault-operator.yml
