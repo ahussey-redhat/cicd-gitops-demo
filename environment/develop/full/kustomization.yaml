@@ -3,16 +3,16 @@ kind: Kustomization
 metadata:
   name: kustomization-file
 resources:
-  - applications/aws-efi-driver.yml
   - applications/odf-operator.yml
   - applications/pipelines-operator.yml
-  # - applications/acm-operator.yml
+  - applications/acm-operator.yml
   - applications/devspaces-operator.yml
-  # - applications/gitlab-operator.yml
   - applications/rhsso.yml
   - applications/quay-operator.yml
   - applications/crunchydata.yml
   - applications/atlassian.yml
-  # - applications/vault-operator.yml
+  #- applications/aws-efi-driver.yml
+  #- applications/gitlab-operator.yml
+  #- applications/vault-operator.yml
   # Other resources
   - misc/rh-subscription-builds.yml
