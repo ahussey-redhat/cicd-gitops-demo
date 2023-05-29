@@ -4,6 +4,9 @@ kind: PostgresCluster
 metadata:
   name: atlassian
   namespace: openshift-operators
+  labels:
+    app: postgresql
+    version: '14'
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
@@ -20,6 +23,13 @@ spec:
           schedules:
             full: "0 1 * * 0"
             differential: "0 1 * * 1-6"
+          volume:
+            volumeClaimSpec:
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 10Gi
   port: 5432
   standby:
     enabled: false
@@ -48,7 +58,7 @@ spec:
           - ReadWriteOnce
         resources:
           requests:
-            storage: 1Gi
+            storage: 10Gi
       replicas: 1
   postgresVersion: 14
   openshift: true
