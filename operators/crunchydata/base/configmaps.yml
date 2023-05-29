@@ -1,0 +1,14 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: atlassian-pgbackrest-config
+  namespace: openshift-operators
+  labels:
+    postgres-operator.crunchydata.com/cluster: atlassian
+    postgres-operator.crunchydata.com/role: pgbackrest
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+data:
+  pgbackrest-settings.json: |
+    {}
