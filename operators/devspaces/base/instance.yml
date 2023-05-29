@@ -25,7 +25,7 @@ spec:
   containerRegistry: {}
   devEnvironments:
     secondsOfRunBeforeIdling: -1
-    maxNumberofWorkspacesPerUser: -1
+    maxNumberOfWorkspacesPerUser: -1
     defaultNamespace:
       template: <username>-devspaces
     secondsOfInactivityBeforeIdling: 3600
