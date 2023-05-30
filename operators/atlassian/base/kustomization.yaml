@@ -3,4 +3,6 @@ kind: Kustomization
 
 resources:
   - helm-repo.yml
+  - configmaps.yml
+  - postgres.yml
 #  - bitbucket.yml

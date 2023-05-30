@@ -1,0 +1,14 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: mattermost-pgbackrest-config
+  namespace: openshift-operators
+  labels:
+    postgres-operator.crunchydata.com/cluster: mattermost
+    postgres-operator.crunchydata.com/role: pgbackrest
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+data:
+  pgbackrest_instance.conf: |
+    config-hash=""

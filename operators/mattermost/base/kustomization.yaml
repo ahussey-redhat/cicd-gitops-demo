@@ -6,4 +6,6 @@ metadata:
 resources:
   - helm-repo.yml
   - mattermost.yml
+  - configmaps.yml
+  - postgres.yml
   - instance.yml

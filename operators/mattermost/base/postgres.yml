@@ -1,0 +1,64 @@
+---
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PostgresCluster
+metadata:
+  name: mattermost
+  namespace: openshift-operators
+  labels:
+    app: postgresql
+    version: '14'
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  backups:
+    pgbackrest:
+      global:
+        repo1-retention-full: "14"
+        repo1-retention-full-type: time
+      restore:
+        enabled: false
+        repoName: repo1
+      repos:
+        - name: repo1
+          schedules:
+            full: "0 1 * * 0"
+            differential: "0 1 * * 1-6"
+          volume:
+            volumeClaimSpec:
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 10Gi
+  port: 5432
+  standby:
+    enabled: false
+  userInterface:
+    pgAdmin:
+      service:
+        type: ClusterIP
+      replicas: 1
+      dataVolumeClaimSpec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+  proxy:
+    pgBouncer:
+      port: 5432
+      service:
+        type: ClusterIP
+      replicas: 1
+  service:
+    type: ClusterIP
+  instances:
+    - dataVolumeClaimSpec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi
+      replicas: 1
+  postgresVersion: 14
+  openshift: true
