@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mattermost
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  destination:
+    namespace: openshift-operators
+    server: 'https://kubernetes.default.svc'
+  project: default
+  sources:
+    - chart: mattermost-operator
+      repoURL: https://helm.mattermost.com
+      targetRevision: 0.3.4
+      helm:
+        releaseName: mattermost-operator
+        valueFiles:
+          - $values/operators/mattermost/base/mattermost-values.yml
+    - repoURL: https://github.com/ahussey-redhat/cicd-gitops-demo.git
+      targetRevision: develop
+      ref: values
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=false

@@ -1,0 +1,29 @@
+---
+metadata:
+  name: mattermost
+  namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  version: 7.9.1
+  replicas: 1
+  ingress:
+    enabled: true
+    host: mattermost.apps.k8s.prod.mid.local
+  database:
+    operatorManaged:    # Operator managed database allows configuration of replicas, storage size and resource requirements. If the `size` is specified, it will override those values.
+      replicas: 1
+      resources:
+        requests:
+          cpu: 250m
+          memory: 512Mi
+      storageSize: 50Gi
+      type: mysql
+  fileStore:
+    operatorManaged:    # Operator managed file store allows configuration of replicas, storage size and resource requirements. If the `size` is specified, it will override those values.
+      replicas: 1
+      resources:
+        requests:
+          cpu: 150m
+          memory: 512Mi
+      storageSize: 50Gi

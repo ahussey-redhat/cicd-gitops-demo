@@ -1,0 +1,13 @@
+---
+apiVersion: helm.openshift.io/v1beta1
+kind: ProjectHelmChartRepository
+metadata:
+  name: mattermost
+  namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  connectionConfig:
+    url: 'https://helm.mattermost.com'
+  description: Mattermost Helm Chart Repo
+  name: Mattermost
