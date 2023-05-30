@@ -4,7 +4,10 @@ kind: Subscription
 metadata:
   labels:
     operators.coreos.com/amq-broker.openshift-operators: ""
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
   name: amq-broker-rhel8
+  namespace: openshift-operators
 spec:
   channel: 7.11.x
   installPlanApproval: Automatic

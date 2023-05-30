@@ -1,0 +1,36 @@
+---
+kind: ActiveMQArtemis
+apiVersion: broker.amq.io/v1beta1
+metadata:
+  name: development-cluster
+  namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  adminUser: admin
+  console:
+    expose: true
+    sslEnabled: false
+  deploymentPlan:
+    size: 2
+    persistenceEnabled: false
+    requireLogin: false
+    messageMigration: false
+    managementRBACEnabled: true
+    journalType: aio
+    enableMetricsPlugin: true
+    jolokiaAgentEnabled: true
+    clustered: true
+    image: placeholder
+  acceptors:
+    - name: AMQP
+      port: 5672
+      expose: true
+      protocols: amqp
+      sslEnabled: false
+    - name: MQTT
+      port: 1883
+      expose: true
+      protocols: mqtt
+      sslEnabled: false
+  version: "7"
