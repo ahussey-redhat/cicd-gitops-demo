@@ -61,10 +61,10 @@ mattermostOperator:
 
 ### IMPORTANT: Below operators should be deployed separately in production environments. ###
 minioOperator:
-  enabled: false
+  enabled: true
   replicas: 1
   appName: minio
-  namespace: minio-operator
+  namespace: openshift-operators
   rbac:
     create: true
   serviceAccount:
@@ -75,10 +75,10 @@ minioOperator:
     pullPolicy: Always
 
 mysqlOperator:
-  enabled: false
+  enabled: true
   replicas: 1
   appName: mysql
-  namespace: mysql-operator
+  namespace: openshift-operators
   rbac:
     create: true
   serviceAccount:
@@ -87,46 +87,23 @@ mysqlOperator:
     repository: quay.io/presslabs/mysql-operator
     tag: 0.4.0
     pullPolicy: Always
-
-  ## Configuration for Mysql operator fs group
-  ##
   fsGroup: 777
-
-  ## Configuration for Mysql operator extra args
-  ##
   extraArgs: []
-
-  ## Configuration for Mysql operator service
-  ##
   service:
     annotations:
       service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
-
-  ## Configuration for Mysql operator statefulset
-  ##
   statefulSet:
     annotations:
       checksum/config: 4b7db0b6281fab87fd1fe282fa4f2f521dbcb5a9486a7589396701e825a9fbb9
       checksum/secret: cf656f56e9efe9eaab93bc378aa1783d4ac5585ec82b5a5f5380c1c228cb5f02
-
-  ## Configuration for Mysql operator sidecar
-  ##
   sidecar:
     image:
       repository: quay.io/presslabs/mysql-operator-sidecar
       tag: 0.4.0
-
-
-  ## Configuration for Probes
-  ##
   readinessProbeTimeout: 10
   readinessProbeInitialDelay: 0
-
   livenessProbeTimeout: 10
   livenessProbeInitialDelay: 200
-
-  ## Configuration for Mysql operator orchestrator
-  ##
   orchestrator:
     config:
       ApplyMySQLPromotionAfterMasterFailover: false
@@ -166,18 +143,14 @@ mysqlOperator:
       PreFailoverProcesses:
       # as backup in case the first request fails
         - "/usr/local/bin/orc-helper failover-in-progress '{failureClusterAlias}' '{failureDescription}' || true"
-
     image:
       repository: quay.io/presslabs/mysql-operator-orchestrator
       tag: 0.4.0
-      pullPolicy: IfNotPresent
-
-  ## Configuration for Mysql operator persistent volume
-  ##
+      pullPolicy: Always
   persistentVolume:
-    accessModes: [ReadWriteOnce]
+    accessModes:
+      - ReadWriteOnce
     size: 10Gi
-
   topology:
     user: "b3JjaGVzdHJhdG9y"
     password: "Nnc2NHBhaGJzUA=="
