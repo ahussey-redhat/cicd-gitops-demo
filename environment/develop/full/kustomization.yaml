@@ -7,6 +7,7 @@ resources:
   - applications/pipelines-operator.yml
   - applications/acm-operator.yml
   - applications/amq-operator.yml
+  - applications/amq-broker-operator.yml
   - applications/devspaces-operator.yml
   - applications/rhsso.yml
   - applications/quay-operator.yml
