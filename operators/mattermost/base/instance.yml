@@ -18,10 +18,7 @@ spec:
     external:
       secret: mattermost-postgres
   fileStore:
-    operatorManaged:                            # Operator managed file store allows configuration of replicas, storage size and resource requirements. If the `size` is specified, it will override those values.
-      replicas: 1
-      resources:
-        requests:
-          cpu: 150m
-          memory: 512Mi
-      storageSize: 50Gi
+    external:
+      url: s3.openshift-storage.svc:443
+      bucket: mattermost-c669ea28-e071-4a69-a837-5c04582ef4f6
+      secret: mattermost-s3
