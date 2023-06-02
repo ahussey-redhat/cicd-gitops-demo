@@ -13,7 +13,7 @@ resources:
   - applications/rhsso.yml
   - applications/quay-operator.yml
   - applications/crunchydata.yml
-  - applications/atlassian.yml
+  #- applications/atlassian.yml
   - applications/mattermost.yml
   #- applications/aws-efi-driver.yml
   #- applications/gitlab-operator.yml
