@@ -1,0 +1,19 @@
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: mattermost
+  namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+  labels:
+    app: mattermost
+    installation.mattermost.com/installation: mattermost-cluster
+    installation.mattermost.com/resource: mattermost-cluster
+spec:
+  to:
+    kind: Service
+    name: mattermost-cluster
+  tls: null
+  port:
+    targetPort: app

@@ -9,3 +9,4 @@ resources:
   - configmaps.yml
   - postgres.yml
   - instance.yml
+  - route.yml
