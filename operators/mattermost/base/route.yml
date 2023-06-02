@@ -11,9 +11,11 @@ metadata:
     installation.mattermost.com/installation: mattermost-cluster
     installation.mattermost.com/resource: mattermost-cluster
 spec:
+  subdomain: mattermost
   to:
     kind: Service
     name: mattermost-cluster
-  tls: null
+  tls:
+    termination: edge
   port:
     targetPort: app
