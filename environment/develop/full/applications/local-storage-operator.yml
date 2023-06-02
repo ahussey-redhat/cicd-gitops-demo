@@ -8,13 +8,13 @@ metadata:
     argocd.argoproj.io/sync-wave: "0"
 spec:
   destination:
-    namespace: openshift-operators
+    namespace: openshift-local-storage
     server: 'https://kubernetes.default.svc'
   project: default
   source:
     path: operators/local-storage-operator
     repoURL: >-
-      git@github.com:ahussey-redhat/cicd-gitops-demo.git
+      https://github.com/ahussey-redhat/cicd-gitops-demo.git
     targetRevision: develop
   syncPolicy:
     automated:
