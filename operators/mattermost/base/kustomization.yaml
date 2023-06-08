@@ -8,5 +8,6 @@ resources:
   - mattermost.yml
   - configmaps.yml
   - postgres.yml
+  - bucketclaim.yml
   - instance.yml
   - route.yml
