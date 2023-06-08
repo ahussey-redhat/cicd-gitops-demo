@@ -6,5 +6,5 @@ metadata:
   namespace: openshift-storage
 spec:
   kind: storagecluster.ocs.openshift.io/v1
-  name: ocs-storagecluster-storagesystem
+  name: ocs-storagecluster
   namespace: openshift-storage
