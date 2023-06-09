@@ -1,0 +1,225 @@
+apiVersion: ocs.openshift.io/v1
+kind: StorageCluster
+metadata:
+  annotations:
+    uninstall.ocs.openshift.io/cleanup-policy: delete
+    uninstall.ocs.openshift.io/mode: graceful
+  resourceVersion: '2601439'
+  name: ocs-storagecluster
+  uid: 80553aae-9ab1-4a7e-81a1-0590c2650e26
+  creationTimestamp: '2023-06-09T07:00:51Z'
+  generation: 2
+  managedFields:
+    - apiVersion: ocs.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          .: {}
+          'f:arbiter': {}
+          'f:encryption':
+            .: {}
+            'f:kms': {}
+          'f:nodeTopologies': {}
+      manager: Mozilla
+      operation: Update
+      time: '2023-06-09T07:00:51Z'
+    - apiVersion: ocs.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"1830b7b2-3d18-4689-8701-28aa958e48bc"}': {}
+      manager: manager
+      operation: Update
+      time: '2023-06-09T07:00:51Z'
+    - apiVersion: ocs.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:uninstall.ocs.openshift.io/cleanup-policy': {}
+            'f:uninstall.ocs.openshift.io/mode': {}
+          'f:finalizers':
+            .: {}
+            'v:"storagecluster.ocs.openshift.io"': {}
+        'f:spec':
+          'f:externalStorage': {}
+          'f:managedResources':
+            'f:cephToolbox': {}
+            'f:cephDashboard': {}
+            'f:cephCluster': {}
+            .: {}
+            'f:cephConfig': {}
+            'f:cephNonResilientPools': {}
+            'f:cephObjectStoreUsers': {}
+            'f:cephBlockPools': {}
+            'f:cephFilesystems': {}
+            'f:cephObjectStores': {}
+          'f:mirroring': {}
+          'f:storageDeviceSets': {}
+      manager: ocs-operator
+      operation: Update
+      time: '2023-06-09T07:00:51Z'
+    - apiVersion: ocs.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:nodeTopologies':
+            .: {}
+            'f:labels':
+              .: {}
+              'f:failure-domain.beta.kubernetes.io/region': {}
+              'f:failure-domain.beta.kubernetes.io/zone': {}
+              'f:kubernetes.io/hostname': {}
+              'f:topology.rook.io/rack': {}
+          'f:version': {}
+          'f:failureDomainKey': {}
+          'f:phase': {}
+          'f:images':
+            .: {}
+            'f:ceph':
+              .: {}
+              'f:actualImage': {}
+              'f:desiredImage': {}
+            'f:noobaaCore':
+              .: {}
+              'f:desiredImage': {}
+            'f:noobaaDB':
+              .: {}
+              'f:desiredImage': {}
+          'f:conditions': {}
+          .: {}
+          'f:failureDomain': {}
+          'f:failureDomainValues': {}
+          'f:relatedObjects': {}
+          'f:kmsServerConnection': {}
+      manager: ocs-operator
+      operation: Update
+      subresource: status
+      time: '2023-06-09T07:01:33Z'
+  namespace: openshift-storage
+  ownerReferences:
+    - apiVersion: odf.openshift.io/v1alpha1
+      kind: StorageSystem
+      name: ocs-storagecluster-storagesystem
+      uid: 1830b7b2-3d18-4689-8701-28aa958e48bc
+  finalizers:
+    - storagecluster.ocs.openshift.io
+spec:
+  arbiter: {}
+  encryption:
+    kms: {}
+  externalStorage: {}
+  managedResources:
+    cephObjectStoreUsers: {}
+    cephCluster: {}
+    cephBlockPools: {}
+    cephNonResilientPools: {}
+    cephObjectStores: {}
+    cephFilesystems: {}
+    cephToolbox: {}
+    cephDashboard: {}
+    cephConfig: {}
+  mirroring: {}
+  nodeTopologies: {}
+  storageDeviceSets:
+    - config: {}
+      resources: {}
+      placement: {}
+      name: ocs-deviceset-gp3-csi
+      dataPVCTemplate:
+        metadata: {}
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 512Gi
+          storageClassName: gp3-csi
+          volumeMode: Block
+        status: {}
+      count: 1
+      replica: 3
+      portable: true
+      preparePlacement: {}
+status:
+  relatedObjects:
+    - apiVersion: ceph.rook.io/v1
+      kind: CephCluster
+      name: ocs-storagecluster-cephcluster
+      namespace: openshift-storage
+      resourceVersion: '2600896'
+      uid: 22f6175e-98f3-4867-9531-b24beabdd2f1
+  failureDomain: rack
+  nodeTopologies:
+    labels:
+      failure-domain.beta.kubernetes.io/region:
+        - ap-southeast-2
+      failure-domain.beta.kubernetes.io/zone:
+        - ap-southeast-2b
+        - ap-southeast-2a
+      kubernetes.io/hostname:
+        - ip-10-16-127-219.ap-southeast-2.compute.internal
+        - ip-10-16-126-120.ap-southeast-2.compute.internal
+        - ip-10-16-126-89.ap-southeast-2.compute.internal
+      topology.rook.io/rack:
+        - rack0
+        - rack1
+        - rack2
+  failureDomainValues:
+    - rack0
+    - rack1
+    - rack2
+  failureDomainKey: topology.rook.io/rack
+  kmsServerConnection: {}
+  version: 4.12.0
+  images:
+    ceph:
+      actualImage: >-
+        registry.redhat.io/rhceph/rhceph-5-rhel8@sha256:a4b90074f7448267f39100bf3425e3f04ad86316dde7cf6df1e16de4e315b606
+      desiredImage: >-
+        registry.redhat.io/rhceph/rhceph-5-rhel8@sha256:a4b90074f7448267f39100bf3425e3f04ad86316dde7cf6df1e16de4e315b606
+    noobaaCore:
+      desiredImage: >-
+        registry.redhat.io/odf4/mcg-core-rhel8@sha256:9b207e17e531387e7c735589c6b4588bab0e584f313da5be0be437ca0d62c802
+    noobaaDB:
+      desiredImage: >-
+        registry.redhat.io/rhel8/postgresql-12@sha256:f7f678d44d5934ed3d95c83b4428fee4b616f37e8eadc5049778f133b4ce3713
+  conditions:
+    - lastHeartbeatTime: '2023-06-09T07:01:33Z'
+      lastTransitionTime: '2023-06-09T07:00:51Z'
+      message: >-
+        Error while reconciling: some StorageClasses were skipped while waiting
+        for pre-requisites to be met:
+        [ocs-storagecluster-cephfs,ocs-storagecluster-ceph-rbd]
+      reason: ReconcileFailed
+      status: 'False'
+      type: ReconcileComplete
+    - lastHeartbeatTime: '2023-06-09T07:00:51Z'
+      lastTransitionTime: '2023-06-09T07:00:51Z'
+      message: Initializing StorageCluster
+      reason: Init
+      status: 'False'
+      type: Available
+    - lastHeartbeatTime: '2023-06-09T07:00:51Z'
+      lastTransitionTime: '2023-06-09T07:00:51Z'
+      message: Initializing StorageCluster
+      reason: Init
+      status: 'True'
+      type: Progressing
+    - lastHeartbeatTime: '2023-06-09T07:00:51Z'
+      lastTransitionTime: '2023-06-09T07:00:51Z'
+      message: Initializing StorageCluster
+      reason: Init
+      status: 'False'
+      type: Degraded
+    - lastHeartbeatTime: '2023-06-09T07:00:51Z'
+      lastTransitionTime: '2023-06-09T07:00:51Z'
+      message: Initializing StorageCluster
+      reason: Init
+      status: Unknown
+      type: Upgradeable
+  phase: Progressing
+
