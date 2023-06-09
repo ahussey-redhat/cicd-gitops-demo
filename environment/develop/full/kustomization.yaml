@@ -3,7 +3,7 @@ kind: Kustomization
 metadata:
   name: kustomization-file
 resources:
-  #- applications/odf-operator.yml
+  - applications/odf-operator.yml
   - applications/pipelines-operator.yml
   - applications/acm-operator.yml
   - applications/amq-operator.yml
