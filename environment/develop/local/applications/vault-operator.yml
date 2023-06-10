@@ -2,22 +2,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: operators
+  name: hashicorp-vault-operator
   namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
 spec:
   destination:
     namespace: openshift-operators
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: environment/develop/local
+    path: config/samples
     repoURL: >-
-      https://github.com/ahussey-redhat/cicd-gitops-demo.git
-    targetRevision: develop
+      https://github.com/hashicorp/vault-secrets-operator.git
+    targetRevision: main
   syncPolicy:
     automated:
       prune: false
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-      - ApplyOutOfSyncOnly=true

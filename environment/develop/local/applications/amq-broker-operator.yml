@@ -2,22 +2,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: operators
+  name: amq-broker-operator
   namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
 spec:
   destination:
     namespace: openshift-operators
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: environment/develop/local
+    path: operators/amq-broker/overlays/7.11.x
     repoURL: >-
       https://github.com/ahussey-redhat/cicd-gitops-demo.git
     targetRevision: develop
   syncPolicy:
     automated:
-      prune: false
+      prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - ApplyOutOfSyncOnly=true
+      - ApplyOutOfSyncOnly=false
