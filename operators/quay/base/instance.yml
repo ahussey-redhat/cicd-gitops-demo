@@ -6,6 +6,7 @@ metadata:
   namespace: quay-operator
   annotations:
     argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   components:
     - managed: true
