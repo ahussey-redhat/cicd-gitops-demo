@@ -11,3 +11,4 @@ resources:
   - bucketclaim.yml
   - instance.yml
   - route.yml
+  - secret.yml
