@@ -1,0 +1,25 @@
+---
+kind: Mattermost
+apiVersion: installation.mattermost.com/v1beta1
+metadata:
+  name: mattermost-cluster
+  namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  version: 7.9.1
+  replicas: 1
+  image: docker.io/mattermost/mattermost-enterprise-edition
+  imagePullPolicy: Always
+  ingress:
+    enabled: true
+    host: mattermost.apps.k8s.prod.mid.local
+  database:
+    external:
+      secret: mattermost-postgres
+  fileStore:
+    external:
+      url: s3.openshift-storage.svc:443
+      bucket: mattermost-c669ea28-e071-4a69-a837-5c04582ef4f6
+      secret: mattermost-s3

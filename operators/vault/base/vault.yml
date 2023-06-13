@@ -2,24 +2,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mattermost-operator
+  name: vault-secrets-operator
   namespace: openshift-gitops
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   destination:
     namespace: openshift-operators
     server: 'https://kubernetes.default.svc'
   project: default
-  source:
-    path: operators/mattermost/overlays/helm
-    repoURL: >-
-      https://github.com/ahussey-redhat/cicd-gitops-demo.git
-    targetRevision: develop
+  sources:
+    - chart: vault-secrets-operator
+      repoURL: https://helm.releases.hashicorp.com
+      targetRevision: 0.1.0
   syncPolicy:
     automated:
-      prune: false
+      prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - ApplyOutOfSyncOnly=true
+      - ApplyOutOfSyncOnly=false

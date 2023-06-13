@@ -13,5 +13,6 @@ resources:
   - applications/quay-operator.yml
   - applications/crunchydata.yml
   - applications/mattermost.yml
+  - applications/vault.yml
   # Other resources
   - misc/rh-subscription-builds.yml

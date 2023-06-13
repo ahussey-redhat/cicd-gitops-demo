@@ -1,0 +1,13 @@
+---
+apiVersion: helm.openshift.io/v1beta1
+kind: ProjectHelmChartRepository
+metadata:
+  name: hashicorp
+  namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  connectionConfig:
+    url: 'https://helm.releases.hashicorp.com'
+  description: HashiCorp Vault Helm Chart Repo
+  name: Hashicorp
