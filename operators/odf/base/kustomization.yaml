@@ -5,5 +5,5 @@ resources:
   - namespace.yml
   - subscription.yml
   - operatorgroup.yml
-  - storagecluster.yml
+#  - storagecluster.yml
   - storagesystem.yml
