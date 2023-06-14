@@ -21,5 +21,5 @@ spec:
   fileStore:
     external:
       url: s3.openshift-storage.svc:443
-      bucket: mattermost-c669ea28-e071-4a69-a837-5c04582ef4f6
+      bucket: mattermost
       secret: mattermost-s3
