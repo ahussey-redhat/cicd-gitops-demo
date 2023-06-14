@@ -13,8 +13,8 @@ spec:
   image: docker.io/mattermost/mattermost-enterprise-edition
   imagePullPolicy: Always
   ingress:
-    enabled: true
-    host: mattermost.apps.k8s.prod.mid.local
+    enabled: false
+    host: we.use.routes.here
   database:
     external:
       secret: mattermost-postgres
