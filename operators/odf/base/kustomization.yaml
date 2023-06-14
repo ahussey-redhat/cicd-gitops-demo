@@ -6,4 +6,4 @@ resources:
   - subscription.yml
   - operatorgroup.yml
 #  - storagecluster.yml
-  - storagesystem.yml
+#  - storagesystem.yml
