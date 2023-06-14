@@ -14,7 +14,7 @@ spec:
   sources:
     - chart: mattermost-operator
       repoURL: https://helm.mattermost.com
-      targetRevision: 0.3.4
+      targetRevision: 0.3.5
       helm:
         releaseName: mattermost-operator
         valueFiles:

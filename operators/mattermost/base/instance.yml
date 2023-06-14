@@ -8,7 +8,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "3"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
-  version: 7.9.1
+  version: 7.9.4
   replicas: 1
   image: docker.io/mattermost/mattermost-enterprise-edition
   imagePullPolicy: Always
