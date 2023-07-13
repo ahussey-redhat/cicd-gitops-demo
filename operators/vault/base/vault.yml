@@ -19,11 +19,10 @@ spec:
         parameters:
           - name: global.openshift
             value: "true"
-        
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - ApplyOutOfSyncOnly=false
+      - ApplyOutOfSyncOnly=true
